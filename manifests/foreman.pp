@@ -13,6 +13,3 @@ class {'foreman':
   db_username    => 'foreman',
   db_password    => 'foreman',
 }
-->
-class {'foreman_data':
-}
