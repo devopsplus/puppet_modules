@@ -13,3 +13,19 @@ class {'foreman':
   db_username    => 'foreman',
   db_password    => 'foreman',
 }
+
+# This is for libvirt compute resources
+class {'foreman::compute::libvirt':
+}
+
+# This is the provisioning setup plugin
+package { 'ruby-foreman-setup':
+  ensure  => 'present',
+  require => Class['foreman'],
+}
+
+class {'foreman::puppetmaster':
+  foreman_user     => 'foreman',
+  foreman_password => 'foreman',
+  require => Class['foreman'],
+}
